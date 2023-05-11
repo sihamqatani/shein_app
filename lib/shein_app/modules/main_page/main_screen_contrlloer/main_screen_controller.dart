@@ -12,10 +12,16 @@ class MainScreenController extends GetxController {
   ];
   List<String> label = ["Home", "Cateogries", "New", "Profile"];
   List<String> icon = [
-    "assets/home.png",
-    "assets/s.png",
-    "assets/dress.png",
-    "assets/user.png",
+    "assets/h2.png",
+    "assets/s1.png",
+    "assets/d2.png",
+    "assets/u1.png",
+  ];
+  List<String> icons = [
+    "assets/h2.png",
+    "assets/s1.png",
+    "assets/d2.png",
+    "assets/u1.png",
   ];
   int currentIndex = 0;
   changeCurrentIndex(value) {

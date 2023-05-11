@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shein_app/shein_app/core/utils/theme/app_color.dart';
+import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomSpotLight extends StatelessWidget {
-  const CustomSpotLight({key});
+  LocalStores? localStores;
+  CustomSpotLight({key, this.localStores});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CustomSpotLight extends StatelessWidget {
                         //     topLeft: Radius.circular(15.sp),
                         //     topRight: Radius.circular(15.sp)),
                         image: DecorationImage(
-                      image: AssetImage("assets/baby.jpg"),
+                      image: AssetImage(localStores!.image!),
                       fit: BoxFit.fill,
                     ))),
                 Container(

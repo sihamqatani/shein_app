@@ -4,6 +4,7 @@ import 'package:shein_app/shein_app/core/utils/theme/app_color.dart';
 import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_controller/home_page_controller.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_Staggred_grid_view.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_contact_us.row.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_container.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_discount_card.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_slider.dart';
@@ -115,7 +116,7 @@ class CustomAllPart extends StatelessWidget {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(3.h),
+                                      borderRadius: BorderRadius.circular(5.h),
                                       image: DecorationImage(
                                         image: AssetImage(
                                             cateogrries[index].image!),
@@ -200,6 +201,7 @@ class CustomAllPart extends StatelessWidget {
                   itemCount: 6,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => ProductCard(
+                        switchy: 1,
                         localStores: cateogrries[index],
                       )),
             ),
@@ -210,7 +212,7 @@ class CustomAllPart extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(1.h),
               child: ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(width: 3.h),
+                  separatorBuilder: (context, index) => SizedBox(width: 4.h),
                   shrinkWrap: true,
                   itemCount: 6,
                   scrollDirection: Axis.horizontal,
@@ -227,12 +229,13 @@ class CustomAllPart extends StatelessWidget {
             height: 30.h,
             width: 100.w,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(1.h),
               child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: cateogrries.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => ProductCard(
+                        switchy: 2,
                         localStores: cateogrries[index],
                       )),
             ),
@@ -254,9 +257,11 @@ class CustomAllPart extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 6,
+                  itemCount: cateogrries.length,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => CustomSpotLight()),
+                  itemBuilder: (context, index) => CustomSpotLight(
+                        localStores: cateogrries[index],
+                      )),
             ),
           ),
           Center(
@@ -270,6 +275,18 @@ class CustomAllPart extends StatelessWidget {
           ),
           Container(
               height: 50.h, width: 100.h, child: const CustomStaggredGridvie()),
+          CustomContactRow(
+            text: "Contact us",
+          ),
+          CustomContactRow(
+            text: "Contact us",
+          ),
+          CustomContactRow(
+            text: "Contact us",
+          ),
+          CustomContactRow(
+            text: "Contact us",
+          ),
         ],
       ),
     );

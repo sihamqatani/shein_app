@@ -67,7 +67,9 @@ class MainScreenView extends GetView<MainScreenController> {
                   tabs: [
                     for (int i = 0; i < controller.icon.length; i++)
                       tabItem(
-                        controller.icon[i],
+                        controller.isSelected
+                            ? controller.icons[i]
+                            : controller.icon[i],
                         controller.label[i],
                         isSelected: i == controller.currentIndex,
                       ),

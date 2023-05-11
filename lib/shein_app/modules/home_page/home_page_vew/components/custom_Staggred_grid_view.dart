@@ -18,7 +18,7 @@ class CustomStaggredGridvie extends GetView<HomePageController> {
         child: GetBuilder<HomePageController>(
           init: HomePageController(),
           builder: (controller) => StaggeredGridView.countBuilder(
-            physics: ClampingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             crossAxisCount: 6,
             itemCount: cateogrries.length,
             itemBuilder: (BuildContext context, int index) =>
