@@ -54,8 +54,9 @@ class CustomAllPart extends StatelessWidget {
                   width: 2.w,
                 ),
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => const CustomContainer(),
-                itemCount: 4,
+                itemBuilder: (context, index) =>
+                    CustomContainer(cate: cate[index]),
+                itemCount: cate.length,
               ),
             ),
           ),
@@ -198,7 +199,9 @@ class CustomAllPart extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: 6,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => ProductCard()),
+                  itemBuilder: (context, index) => ProductCard(
+                        localStores: cateogrries[index],
+                      )),
             ),
           ),
           Container(
@@ -227,9 +230,11 @@ class CustomAllPart extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 6,
+                  itemCount: cateogrries.length,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => ProductCard()),
+                  itemBuilder: (context, index) => ProductCard(
+                        localStores: cateogrries[index],
+                      )),
             ),
           ),
           Padding(

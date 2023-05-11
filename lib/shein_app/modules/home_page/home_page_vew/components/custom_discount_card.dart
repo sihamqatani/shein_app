@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:sizer/sizer.dart';
 
 class ProductCard extends StatelessWidget {
+  LocalStores? localStores;
   String? image;
   Color? background, containerColor;
 
   double? width;
-  ProductCard({key, this.width, this.background, this.image});
+  ProductCard({key, this.width, this.background, this.image, this.localStores});
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,11 @@ class ProductCard extends StatelessWidget {
                         //     topLeft: Radius.circular(15.sp),
                         //     topRight: Radius.circular(15.sp)),
                         image: DecorationImage(
-                      image: AssetImage("assets/baby.jpg"),
+                      image: AssetImage(localStores!.image!),
                       fit: BoxFit.fill,
                     ))),
                 Container(
-                    height: 4.h,
+                    height: 5.h,
                     width: 4.h,
                     color: Colors.yellow,
                     child: Column(

@@ -6,7 +6,6 @@ import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/c
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_search_text_field.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/data.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
 import 'components/cateogry.dart';
 
@@ -24,7 +23,7 @@ class _HomePageViewState extends State<HomePageView>
   // TabController More Information => https://api.flutter.dev/flutter/material/TabController-class.html
 
   void initState() {
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 8, vsync: this);
     super.initState();
   }
 
@@ -40,114 +39,19 @@ class _HomePageViewState extends State<HomePageView>
     return GetBuilder<HomePageController>(
       init: HomePageController(),
       builder: (gcontroller) => Scaffold(
-        body:
-            //     VerticalScrollableTabView(
-            //   verticalScrollPosition: VerticalScrollPosition.begin,
-            //   listItemData: data,
-            //   eachItemChild: (object, index) =>
-            //       CategorySection(category: object as Category),
-            //   tabController: tabController,
-            //   slivers: [
-            //     SliverAppBar(
-            //       // automaticallyImplyLeading: false,
-            //       toolbarHeight: 70,
-            //       actions: [
-            //         Padding(
-            //           padding: EdgeInsets.all(1.h),
-            //           child: SizedBox(
-            //             width: 34.h,
-            //             height: 8,
-            //             child: MyAddTextField(
-            //               label: "search",
-            //               prefix: Icons.search,
-            //               obcure: false,
-            //               controller: controller,
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: EdgeInsets.all(1.h),
-            //           child: Icon(
-            //             Icons.mail,
-            //             size: 6.w,
-            //           ),
-            //         ),
-            //       ],
-            //       leadingWidth: 15.h,
-            //       elevation: 0,
-            //       leading: Padding(
-            //         padding: EdgeInsets.all(1.h),
-            //         child: Row(
-            //           children: [
-            //             Icon(
-            //               Icons.badge_sharp,
-            //               size: 6.w,
-            //             ),
-            //             SizedBox(
-            //               width: .5.h,
-            //             ),
-            //             Icon(
-            //               Icons.favorite,
-            //               size: 6.w,
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //       bottom: TabBar(
-            //         //  physics: NeverScrollableScrollPhysics(),
-            //         isScrollable: true,
-            //         controller: tabController,
-            //         indicatorPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-            //         indicatorColor: Colors.black,
-            //         labelColor: Colors.black,
-            //         unselectedLabelColor: Colors.grey,
-            //         indicatorWeight: 3.0,
-            //         tabs: data.map((e) {
-            //           return Tab(text: e.title);
-            //         }).toList(),
-            //         onTap: (index) {
-            //           // VerticalScrollableTabBarStatus.setIndex(index);
-            //         },
-            //       ),
-            //       // bottom: PreferredSize(
-            //       //   preferredSize: Size.fromHeight(5.h),
-            //       //   child: Container(
-            //       //     height: 5.h,
-            //       //     width: double.infinity,
-            //       //     decoration: BoxDecoration(
-            //       //       color: Colors.white,
-            //       //       //  borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
-            //       //     ),
-            //       //     child: Center(child: Text("تفاصيل")),
-            //       //   ),
-            //       // ),
-            //       flexibleSpace: FlexibleSpaceBar(
-            //         collapseMode: CollapseMode.parallax,
-            //         background: Container(
-            //           height: 1.h,
-            //           child: Image.asset(
-            //             "assets/1.png",
-            //             fit: BoxFit.fill,
-            //           ),
-            //         ),
-            //       ),
-            //       //backgroundColor: Colors.grey[50],
-            //       // title: const Text('App Bar'),
-            //       expandedHeight: 300,
-            //       pinned: true,
-            //       // forceElevated: innerBoxIsScrolled,
-            //     ),
-            //   ],
-            // )
-            NestedScrollView(
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          physics: const BouncingScrollPhysics(),
           clipBehavior: Clip.antiAlias,
-          dragStartBehavior: DragStartBehavior.down,
+          // dragStartBehavior: DragStartBehavior.start,
           // reverse: true,
           // This builds the scrollable content above the body
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          headerSliverBuilder: (context, fals) => [
             SliverAppBar(
-              automaticallyImplyLeading: false,
-              toolbarHeight: 70,
+              // floating: true,
+
+              automaticallyImplyLeading: true,
+              //toolbarHeight: 70,
               actions: [
                 Padding(
                   padding: EdgeInsets.all(1.h),
@@ -155,6 +59,7 @@ class _HomePageViewState extends State<HomePageView>
                     width: 34.h,
                     height: 8,
                     child: MyAddTextField(
+                      suffix: Icons.camera_alt_outlined,
                       label: "search",
                       prefix: Icons.search,
                       obcure: false,
@@ -165,7 +70,7 @@ class _HomePageViewState extends State<HomePageView>
                 Padding(
                   padding: EdgeInsets.all(1.h),
                   child: Icon(
-                    Icons.mail,
+                    Icons.mail_outline,
                     size: 6.w,
                   ),
                 ),
@@ -177,14 +82,14 @@ class _HomePageViewState extends State<HomePageView>
                 child: Row(
                   children: [
                     Icon(
-                      Icons.badge_sharp,
+                      Icons.badge_outlined,
                       size: 6.w,
                     ),
                     SizedBox(
-                      width: .5.h,
+                      width: 1.w,
                     ),
                     Icon(
-                      Icons.favorite,
+                      Icons.favorite_border,
                       size: 6.w,
                     ),
                   ],
@@ -192,54 +97,55 @@ class _HomePageViewState extends State<HomePageView>
               ),
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(5.h),
-                // child: Container(
-                //   height: 5.h,
-                //   width: double.infinity,
-                //   decoration: BoxDecoration(
-                //     color: Colors.white,
-                //     //  borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
-                //   ),
-                //   child: Center(child: Text("تفاصيل")),
-                // ),
-                child: TabBar(
-                  indicatorWeight: 3.h,
-                  controller: tabController,
-                  labelColor: Colors.grey,
-                  isScrollable: true,
-                  indicatorColor: Colors.transparent,
-                  unselectedLabelColor: Colors.grey,
-                  unselectedLabelStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w700,
+                child: Container(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: TabBar(
+                    // overlayColor: Colors.black,
+                    indicatorWeight: 3.h,
+                    controller: tabController,
+                    labelColor: Colors.grey,
+                    isScrollable: true,
+                    indicatorColor: Colors.transparent,
+                    unselectedLabelColor: Colors.grey,
+                    unselectedLabelStyle: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    labelStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    tabs: <Widget>[
+                      Text('ALL'),
+                      Text('WOMEN'),
+                      Text('MEN'),
+                      Text('KIDS'),
+                      Text('CURVE+PLUS'),
+                      Text('HOME+PETS'),
+                      Text('SPORTS'),
+                      Text('ELECTRONCS'),
+                    ],
                   ),
-                  labelStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  tabs: <Widget>[
-                    Text('BROTCHEN'),
-                    Text('KALTEGETRANKE'),
-                    Text('HEIBGETRANKE'),
-                    Text('MILCHPPODUKE'),
-                  ],
                 ),
               ),
               flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.parallax,
-                background: Container(
-                  height: 1.h,
-                  child: Image.asset(
-                    "assets/1.png",
-                    fit: BoxFit.fill,
-                  ),
+                // expandedTitleScale: 2,
+                // stretchModes: [],
+                //collapseMode: CollapseMode.values,
+                background: Center(
+                  child: Container(
+                      // height: 5.h,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset("assets/sh.png")),
                 ),
               ),
               //backgroundColor: Colors.grey[50],
               // title: const Text('App Bar'),
-              expandedHeight: 300,
+              expandedHeight: 200,
+
               pinned: true,
-              forceElevated: innerBoxIsScrolled,
+              // forceElevated: innerBoxIsScrolled,
             ),
           ],
           // The content of the scroll view
@@ -263,7 +169,31 @@ class _HomePageViewState extends State<HomePageView>
               ),
               Center(
                 child: Text(
-                  'MILCHPPODUKE',
+                  'NO DATA',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'NO DATA',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'NO DATA',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'NO DATA',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'NO DATA',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
                 ),
               ),

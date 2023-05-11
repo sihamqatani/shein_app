@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({key});
+  LocalStores? cate;
+  CustomContainer({key, this.cate});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +16,12 @@ class CustomContainer extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(1.h),
           child: Image.asset(
-            "assets/calendar.png",
+            cate!.image!,
             color: Colors.black,
           ),
         ),
-        const Text(
-          "cart",
+        Text(
+          cate!.name!,
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         )
       ]),

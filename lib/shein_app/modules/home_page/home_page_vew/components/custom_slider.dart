@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shein_app/shein_app/core/dummy/dummy.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -27,14 +28,14 @@ class CustomSlider extends StatelessWidget {
               ),
               child: CarouselSlider.builder(
                 itemBuilder: (context, index, realIndex) => Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     // border: Border.all(
                     //   color: Colors.grey[200]!,
                     //   width: 5,
                     // ),
                     //  borderRadius: BorderRadius.circular(15.sp),
                     boxShadow: [
-                      new BoxShadow(
+                      BoxShadow(
                         color: Colors.white,
                         //  offset: new Offset(10.0, 10.0),
                       ),
@@ -45,12 +46,13 @@ class CustomSlider extends StatelessWidget {
                   // width: MediaQuery.of(context).size.width,
                   //  margin: EdgeInsets.symmetric(horizontal: 5.0),
                   child: Container(
+                    height: 15.h,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage(
-                          text[index],
+                          banner[index].image!,
                         ),
                       ),
                       // border:
