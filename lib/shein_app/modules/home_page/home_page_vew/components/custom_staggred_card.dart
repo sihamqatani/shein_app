@@ -22,26 +22,20 @@ class CustomStaggredCard extends GetView<HomePageController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  // fit: StackFit.loose,
-                  alignment: Alignment.topLeft,
-                  children: [
-                    Container(
-                        height: controller.isHeight == true ? 20.h : 27.h,
-                        width: 24.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.sp),
-                              topRight: Radius.circular(5.sp),
-                              bottomLeft: Radius.circular(4.sp),
-                              bottomRight: Radius.circular(4.sp),
-                            ),
-                            image: DecorationImage(
-                              image: AssetImage(category!.image!),
-                              fit: BoxFit.fill,
-                            ))),
-                  ],
-                ),
+                Container(
+                    height: controller.isHeight == true ? 20.h : 27.h,
+                    width: 24.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5.sp),
+                          topRight: Radius.circular(5.sp),
+                          bottomLeft: Radius.circular(4.sp),
+                          bottomRight: Radius.circular(4.sp),
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(category!.image!),
+                          fit: BoxFit.fill,
+                        ))),
                 Column(
                   children: [
                     Padding(

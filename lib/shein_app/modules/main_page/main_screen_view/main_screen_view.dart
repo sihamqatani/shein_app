@@ -78,7 +78,9 @@ class MainScreenView extends GetView<MainScreenController> {
               ),
             );
           }),
-      body: controller.list[controller.currentIndex],
+      body: GetBuilder<MainScreenController>(
+          init: MainScreenController(),
+          builder: (controller) => controller.list[controller.currentIndex]),
     );
   }
 }

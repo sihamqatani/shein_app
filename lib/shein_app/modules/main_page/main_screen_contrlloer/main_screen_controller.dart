@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shein_app/shein_app/modules/caetogries_page/catogries_page_view/cateogries_view.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/home_page_view.dart';
 
 class MainScreenController extends GetxController {
   bool isSelected = false;
   var list = [
     HomePageView(),
-    HomePageView(),
+    CateogriesPageView(),
     HomePageView(),
     HomePageView(),
   ];

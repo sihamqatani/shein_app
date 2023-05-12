@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shein_app/shein_app/core/utils/utils_widgets/custom_tabBar.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_controller/home_page_controller.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_all_part.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_search_text_field.dart';
@@ -98,36 +99,8 @@ class _HomePageViewState extends State<HomePageView>
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(5.h),
                 child: Container(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  child: TabBar(
-                    // overlayColor: Colors.black,
-                    indicatorWeight: 3.h,
-                    controller: tabController,
-                    labelColor: Colors.grey,
-                    isScrollable: true,
-                    indicatorColor: Colors.transparent,
-                    unselectedLabelColor: Colors.grey,
-                    unselectedLabelStyle: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    labelStyle: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    tabs: <Widget>[
-                      Text('ALL'),
-                      Text('WOMEN'),
-                      Text('MEN'),
-                      Text('KIDS'),
-                      Text('CURVE+PLUS'),
-                      Text('HOME+PETS'),
-                      Text('SPORTS'),
-                      Text('ELECTRONCS'),
-                    ],
-                  ),
-                ),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    child: CustomTabBar(tabController: tabController)),
               ),
               flexibleSpace: FlexibleSpaceBar(
                 // expandedTitleScale: 2,
