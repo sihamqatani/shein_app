@@ -16,6 +16,7 @@ class SubCateogryContainer extends GetView<CateogriesController> {
     return InkWell(
       onTap: () {
         controller.getSelected(x);
+        // controller.getProductsByCateogrries(2, 1);
       },
       child: Obx(
         () => InkWell(

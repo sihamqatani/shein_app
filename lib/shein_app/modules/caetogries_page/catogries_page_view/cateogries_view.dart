@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:shein_app/shein_app/core/utils/utils_widgets/custom_tabBar.dart';
+import 'package:shein_app/shein_app/data/models/product_model.dart';
 import 'package:shein_app/shein_app/modules/caetogries_page/cateogries_page_controller/cateogries_page_controller.dart';
 import 'package:shein_app/shein_app/modules/caetogries_page/catogries_page_view/components/custom_sub_cateory_container.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_search_text_field.dart';
@@ -72,42 +74,50 @@ class CateogriesPageView extends StatelessWidget {
                 ),
                 body: TabBarView(
                   children: controller.cateogry.map((item) {
-                    return Row(
-                      children: [
-                        Container(
-                          width: 27.w,
-                          color: Colors.grey[300],
-                          child: ListView.builder(
-                            itemCount: controller.subCateogry.length,
-                            itemBuilder: (context, index) {
-                              return SubCateogryContainer(
-                                x: index,
-                                name: controller.subCateogry[index].name,
-                              );
-                            },
+                    return Row(children: [
+                      Container(
+                        width: 27.w,
+                        color: Colors.grey[300],
+                        child: ListView.builder(
+                          itemCount: controller.subCateogry.length,
+                          itemBuilder: (context, index) {
+                            return SubCateogryContainer(
+                              x: index,
+                              name: controller.subCateogry[index].name,
+                            );
+                          },
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width * .7,
+                        child: GetBuilder<CateogriesController>(
+                          init: CateogriesController(),
+                          builder: (controller) =>
+                              PagedGridView<int, ProductItem>(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 8,
+                              crossAxisSpacing: 8,
+                            ),
+                            pagingController: controller.pagingController,
+                            builderDelegate:
+                                PagedChildBuilderDelegate<ProductItem>(
+                              itemBuilder: (context, item, index) {
+                                return ListTile(
+                                  title: Text(item.name!),
+                                );
+                              },
+                              firstPageProgressIndicatorBuilder: (_) =>
+                                  Center(child: CircularProgressIndicator()),
+                              newPageProgressIndicatorBuilder: (_) =>
+                                  Center(child: CircularProgressIndicator()),
+                            ),
                           ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width * .7,
-                          child: GridView.builder(
-                            padding: EdgeInsets.all(0),
-                            shrinkWrap: true,
-                            itemCount: 10,
-                            itemBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                color: Colors.amber,
-                              ),
-                            ),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                            ),
-                          ),
-                        )
-                      ],
-                    );
+                      )
+                    ]);
                   }).toList(),
                 ),
               ),

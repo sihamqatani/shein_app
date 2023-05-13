@@ -10,7 +10,7 @@ ProductModel productModelFromMap(String str) =>
 String productModelToMap(ProductModel data) => json.encode(data.toMap());
 
 class ProductModel {
-  List<Datum>? data;
+  List<ProductItem>? data;
   ProductModelLinks? links;
   Meta? meta;
   bool? success;
@@ -27,7 +27,8 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> json) => ProductModel(
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromMap(x))),
+            : List<ProductItem>.from(
+                json["data"]!.map((x) => ProductItem.fromMap(x))),
         links: json["links"] == null
             ? null
             : ProductModelLinks.fromMap(json["links"]),
@@ -46,7 +47,7 @@ class ProductModel {
       };
 }
 
-class Datum {
+class ProductItem {
   int? id;
   String? name;
   String? thumbnailImage;
@@ -61,7 +62,7 @@ class Datum {
   bool? inStock;
   DatumLinks? links;
 
-  Datum({
+  ProductItem({
     this.id,
     this.name,
     this.thumbnailImage,
@@ -77,7 +78,7 @@ class Datum {
     this.links,
   });
 
-  factory Datum.fromMap(Map<String, dynamic> json) => Datum(
+  factory ProductItem.fromMap(Map<String, dynamic> json) => ProductItem(
         id: json["id"],
         name: json["name"],
         thumbnailImage: json["thumbnail_image"],
