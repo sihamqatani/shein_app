@@ -3,4 +3,7 @@ class ApiRoutes {
   static const allCateogries = "/categories/top";
   static const subCateogries = "/sub-categories/";
   static const productByCateogry = "/products";
+  static const storageImage = "https://rsa-ye.com/public/";
+  static const signUp = "/auth/signup";
+  //static const signIn = "/auth/signup";
 }

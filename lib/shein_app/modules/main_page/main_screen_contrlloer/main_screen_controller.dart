@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shein_app/shein_app/modules/auth_page/auth_page_view.dart';
 import 'package:shein_app/shein_app/modules/caetogries_page/catogries_page_view/cateogries_view.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/home_page_view.dart';
+import 'package:shein_app/shein_app/modules/main_page/main_screen_view/main_screen_view.dart';
 
 class MainScreenController extends GetxController {
   bool isSelected = false;
@@ -9,7 +11,7 @@ class MainScreenController extends GetxController {
     HomePageView(),
     CateogriesPageView(),
     HomePageView(),
-    HomePageView(),
+    AuthPageView(),
   ];
   List<String> label = ["Home", "Cateogries", "New", "Profile"];
   List<String> icon = [
