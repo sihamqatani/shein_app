@@ -23,8 +23,8 @@ class CustomStaggredCard extends GetView<HomePageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    height: controller.isHeight == true ? 20.h : 27.h,
-                    width: 24.h,
+                    height: controller.isHeight == true ? 19.h : 26.h,
+                    width: 25.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(5.sp),

@@ -14,8 +14,8 @@ class CustomTabBar extends GetView<CateogriesController> {
       // overlayColor: Colors.black,
       indicatorWeight: 3.h,
       controller: tabController ?? tabController,
-      labelColor: Colors.grey,
-      isScrollable: true,
+      labelColor: Colors.black,
+      // isScrollable: true,
       indicatorColor: Colors.transparent,
       unselectedLabelColor: Colors.grey,
       unselectedLabelStyle: TextStyle(
@@ -43,5 +43,29 @@ class CustomTabBar extends GetView<CateogriesController> {
             Text('ELECTRONCS'),
           ],
     );
+  }
+}
+
+class CustomTab extends StatelessWidget {
+  const CustomTab({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+        length: 8,
+        // overlayColor: Colors.black,
+
+        child: TabBar(
+          tabs: [
+            Text('ALL'),
+            Text('WOMEN'),
+            Text('MEN'),
+            Text('KIDS'),
+            Text('CURVE+PLUS'),
+            Text('HOME+PETS'),
+            Text('SPORTS'),
+            Text('ELECTRONCS'),
+          ],
+        ));
   }
 }

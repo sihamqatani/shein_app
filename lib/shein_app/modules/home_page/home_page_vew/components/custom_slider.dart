@@ -5,8 +5,11 @@ import 'package:shein_app/shein_app/core/dummy/dummy.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomSlider extends StatelessWidget {
+  // late List<String> show;
   var pageController = PageController();
-  CustomSlider({key});
+  CustomSlider({
+    key,
+  });
 
   @override
   Widget build(BuildContext context) {

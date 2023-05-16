@@ -77,7 +77,7 @@ class CateogriesPageView extends StatelessWidget {
                             )
                           : SpinKitFadingCircle(
                               size: 20.sp,
-                              color: Colors.black,
+                              color: ColorManager.primary,
                             )),
                 ),
                 body: TabBarView(
@@ -86,20 +86,15 @@ class CateogriesPageView extends StatelessWidget {
                       Container(
                         width: 27.w,
                         color: Colors.grey[300],
-                        child: controller.subCateogry.isNotEmpty
-                            ? ListView.builder(
-                                itemCount: controller.subCateogry.length,
-                                itemBuilder: (context, index) {
-                                  return SubCateogryContainer(
-                                    x: index,
-                                    name: controller.subCateogry[index].name,
-                                  );
-                                },
-                              )
-                            : SpinKitFadingCircle(
-                                size: 20.sp,
-                                color: ColorManager.primary,
-                              ),
+                        child: ListView.builder(
+                          itemCount: controller.subCateogry.length,
+                          itemBuilder: (context, index) {
+                            return SubCateogryContainer(
+                              x: index,
+                              name: controller.subCateogry[index].name,
+                            );
+                          },
+                        ),
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height,
@@ -109,34 +104,38 @@ class CateogriesPageView extends StatelessWidget {
                           builder: (controller) =>
                               PagedGridView<int, ProductItem>(
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
-                              mainAxisSpacing: 5,
-                              crossAxisSpacing: 5,
+                              mainAxisSpacing: 1,
+                              crossAxisSpacing: 1,
                             ),
                             pagingController: controller.pagingController,
                             builderDelegate:
                                 PagedChildBuilderDelegate<ProductItem>(
                               itemBuilder: (context, item, index) {
-                                return Column(children: [
-                                  Container(
-                                    width: 80.0,
-                                    height: 15.h,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: CachedNetworkImage(
-                                      height: 5.h,
-                                      imageUrl: ApiRoutes.storageImage +
-                                          controller.productItem[index]
-                                              .thumbnailImage!,
-                                      fit: BoxFit.cover,
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset("assets/sh.png"),
+                                return Container(
+                                  height: 20.h,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          item.name!,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(fontSize: 2.h),
+                                        ),
+                                        CachedNetworkImage(
+                                          imageUrl: ApiRoutes.storageImage +
+                                              item.thumbnailImage!,
+                                          fit: BoxFit.cover,
+                                          height: 5.h,
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset("assets/sh.png"),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Text(controller.productItem[index].name!)
-                                ]);
+                                );
                               },
                               firstPageProgressIndicatorBuilder: (_) =>
                                   Center(child: CircularProgressIndicator()),

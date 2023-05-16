@@ -17,18 +17,27 @@ class CustomStaggredGridvie extends GetView<HomePageController> {
         padding: EdgeInsets.all(1.h),
         child: GetBuilder<HomePageController>(
           init: HomePageController(),
-          builder: (controller) => StaggeredGridView.countBuilder(
-            physics: BouncingScrollPhysics(),
-            crossAxisCount: 6,
-            itemCount: cateogrries.length,
-            itemBuilder: (BuildContext context, int index) =>
-                CustomStaggredCard(category: cateogrries[index]),
-            staggeredTileBuilder: (int index) {
-              controller.isHeight = index.isEven;
-              return StaggeredTile.count(3, index.isEven ? 4 : 5);
+          builder: (controller) => LayoutBuilder(
+            builder: (context, constraints) {
+              final double availableWidth = constraints.maxWidth;
+              final bool isSmallScreen = availableWidth <= 600.0;
+              final int crossAxisCount = isSmallScreen ? 2 : 4;
+              final double aspectRatio = isSmallScreen ? 0.8 : 1.2;
+              return StaggeredGridView.countBuilder(
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisCount: 6,
+                shrinkWrap: true,
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) =>
+                    CustomStaggredCard(category: cateogrries[index]),
+                staggeredTileBuilder: (int index) {
+                  controller.isHeight = index.isEven;
+                  return StaggeredTile.count(3, index.isEven ? 4 : 5);
+                },
+                mainAxisSpacing: 1.0,
+                crossAxisSpacing: 1.0,
+              );
             },
-            mainAxisSpacing: 1.0,
-            crossAxisSpacing: 1.0,
           ),
         ));
   }

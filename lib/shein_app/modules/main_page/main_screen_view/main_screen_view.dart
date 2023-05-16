@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:shein_app/shein_app/core/utils/theme/app_color.dart';
 import 'package:shein_app/shein_app/modules/main_page/main_screen_contrlloer/main_screen_controller.dart';
 import 'package:shein_app/shein_app/modules/main_page/main_screen_view/components/custom_bottom_nav_bar.dart';
 import 'package:sizer/sizer.dart';
 
-class MainScreenView extends GetView<MainScreenController> {
+class MainScreenView extends GetWidget<MainScreenController> {
   MainScreenView({key});
+  //Get.put(MainScreenController());
   TabController? cont;
   Widget tabItem(String path, String label, {bool isSelected = false}) {
     Get.put(MainScreenController());
@@ -32,15 +34,12 @@ class MainScreenView extends GetView<MainScreenController> {
               ImageIcon(
                 AssetImage(path),
                 color: isSelected ? Colors.black : Colors.grey[700],
-                size: 30.sp,
               ),
-              Expanded(
-                child: Text(label.tr,
-                    style: TextStyle(
-                        fontSize: 10.sp,
-                        color: isSelected ? Colors.black : Colors.grey[700],
-                        fontWeight: FontWeight.bold)),
-              ),
+              Text(label,
+                  style: TextStyle(
+                      fontSize: 5.6.sp,
+                      color: isSelected ? Colors.black : Colors.grey[700],
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ));
@@ -48,39 +47,50 @@ class MainScreenView extends GetView<MainScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: GetBuilder<MainScreenController>(
-          init: MainScreenController(),
-          builder: (controller) {
-            return Container(
-              height: 10.h,
-              color: Colors.white,
-              child: DefaultTabController(
-                length: 4,
-                child: TabBar(
-                  indicatorColor: Colors.white,
-                  onTap: ((value) {
-                    // Get.find<LanguageController>();
-                    controller.changeCurrentIndex(value);
-                  }),
-                  controller: cont,
-                  tabs: [
-                    for (int i = 0; i < controller.icon.length; i++)
-                      tabItem(
-                        controller.isSelected
-                            ? controller.icons[i]
-                            : controller.icon[i],
-                        controller.label[i],
-                        isSelected: i == controller.currentIndex,
-                      ),
-                  ],
+    return Obx(
+      () =>
+          // Get.put(LanguageController());
+          Scaffold(
+        extendBody: true,
+        backgroundColor: ColorManager.primary,
+        bottomNavigationBar:
+            // Container(
+            //   height: 8.h,
+            //   width: 45.w,
+            //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(70)),
+            Container(
+                height: 10.h,
+                width: 15.w,
+                padding: EdgeInsets.only(
+                  bottom: 1.w,
                 ),
-              ),
-            );
-          }),
-      body: GetBuilder<MainScreenController>(
-          init: MainScreenController(),
-          builder: (controller) => controller.list[controller.currentIndex]),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: Container(
+                      color: Colors.grey[100],
+                      child: DefaultTabController(
+                        length: controller.list.length,
+                        // onTap: ((value) => controller.changCurrentIndex(value)),
+                        // controller: cont,
+                        child: TabBar(
+                          onTap: ((value) {
+                            // Get.find<LanguageController>();
+                            controller.changeCurrentIndex(value);
+                          }),
+                          controller: cont,
+                          tabs: [
+                            for (int i = 0; i < controller.icon.length; i++)
+                              tabItem(
+                                controller.icon[i],
+                                controller.label[i],
+                                isSelected: i == controller.currentIndex.value,
+                              ),
+                          ],
+                        ),
+                      ),
+                    ))),
+        body: controller.list[controller.currentIndex.value],
+      ),
     );
   }
 }

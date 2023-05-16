@@ -4,8 +4,16 @@ import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomSpotLight extends StatelessWidget {
+  Color? firstColor;
+  final String text;
+  Color? secondColor;
   LocalStores? localStores;
-  CustomSpotLight({key, this.localStores});
+  CustomSpotLight(
+      {key,
+      this.localStores,
+      this.firstColor,
+      this.secondColor,
+      required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +47,12 @@ class CustomSpotLight extends StatelessWidget {
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
                             colors: [
-                              Colors.orange[700]!,
-                              Colors.red,
+                              firstColor ?? Colors.orange[700]!,
+                              secondColor ?? Colors.red,
                             ])),
                     child: Center(
                         child: Text(
-                      "SheIn Brand",
+                      text,
                       style: TextStyle(
                           color: ColorManager.primary,
                           fontWeight: FontWeight.w600),
