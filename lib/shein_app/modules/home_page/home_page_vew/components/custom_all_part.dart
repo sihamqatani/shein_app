@@ -95,7 +95,10 @@ class CustomAllPart extends StatelessWidget {
                             crossAxisSpacing: 2,
                             mainAxisSpacing: 4),
                         itemBuilder: (BuildContext context, int index) {
-                          return GridPageView(cateogreis: cateogrries[index]);
+                          return Padding(
+                            padding: EdgeInsets.only(left: .6.w),
+                            child: GridPageView(cateogreis: cateogrries[index]),
+                          );
                         },
                       );
                     }),
@@ -216,21 +219,34 @@ class CustomAllPart extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: 100.h, width: 100.h, child: const CustomStaggredGridvie()),
+            height: 100.h,
+            width: 100.h,
+            child: CustomStaggredGridvie(
+              images: cateogrries,
+            )),
         SizedBox(
           height: 5.h,
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shein info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shipping info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Return Policy",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Term & Condition",
+        ),
+        CustomContactRow(
+          text: "Social Responsibility",
+        ),
+        CustomContactRow(
+          text: "Klama",
+        ),
+        CustomContactRow(
+          text: "Careers",
         ),
       ],
     );

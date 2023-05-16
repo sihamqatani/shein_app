@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_controller/home_page_controller.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../core/utils/utils_widgets/rich_text.dart';
 import '../../../../data/models/local_store.dart';
 
 class CustomStaggredCard extends GetView<HomePageController> {
@@ -37,16 +38,26 @@ class CustomStaggredCard extends GetView<HomePageController> {
                           fit: BoxFit.cover,
                         ))),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.all(1.h),
-                      child: Text(
-                        "10.5",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13.sp),
+                      child: RichTextUtils(
+                        text: '12',
+                        textspan: '.05 \$',
+                        fontSizeSpan: 7.sp,
+                        fontSizeText: 13.sp,
                       ),
+                      // child:
+
+                      // Text(
+                      //   "10.5",
+                      //   style: TextStyle(
+                      //       color: Colors.black,
+                      //       fontWeight: FontWeight.bold,
+                      //       fontSize: 13.sp),
+                      // ),
                     ),
                     //  Spacer(),
                     Row(

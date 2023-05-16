@@ -156,17 +156,17 @@ class CustomManPart extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(cateogrries[index].name!),
+                              child: Text(man[index].name!),
                             ),
                             Row(children: [
                               DairlyDrop(
-                                localStores: cateogrries[index],
+                                localStores: man[index],
                               ),
                               DairlyDrop(
-                                localStores: cateogrries[index],
+                                localStores: man[index],
                               ),
                               DairlyDrop(
-                                localStores: cateogrries[index],
+                                localStores: man[index],
                               )
                             ]),
                           ],
@@ -187,7 +187,7 @@ class CustomManPart extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => ProductCard(
                       switchy: 1,
-                      localStores: cateogrries[index],
+                      localStores: man[index],
                     )),
           ),
         ),
@@ -205,10 +205,10 @@ class CustomManPart extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 6,
+                itemCount: 5,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => DairlyDrop(
-                      localStores: cateogrries[index],
+                      localStores: man[index],
                     )),
           ),
         ),
@@ -222,21 +222,34 @@ class CustomManPart extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: 100.h, width: 100.h, child: const CustomStaggredGridvie()),
+            height: 100.h,
+            width: 100.h,
+            child: CustomStaggredGridvie(
+              images: man,
+            )),
         SizedBox(
           height: 5.h,
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shein info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shipping info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Return Policy",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Term & Condition",
+        ),
+        CustomContactRow(
+          text: "Social Responsibility",
+        ),
+        CustomContactRow(
+          text: "Klama",
+        ),
+        CustomContactRow(
+          text: "Careers",
         ),
       ],
     );

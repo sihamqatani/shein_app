@@ -7,11 +7,9 @@ import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/c
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_man_part.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_search_text_field.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_women_part.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/data.dart';
+
 import 'package:shein_app/shein_app/modules/home_page/sliverscaffold.dart';
 import 'package:sizer/sizer.dart';
-
-import 'components/cateogry.dart';
 
 class HomePageView extends StatefulWidget {
   @override

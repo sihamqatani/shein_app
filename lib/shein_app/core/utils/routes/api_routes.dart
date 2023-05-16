@@ -5,5 +5,6 @@ class ApiRoutes {
   static const productByCateogry = "/products";
   static const storageImage = "https://rsa-ye.com/public/";
   static const signUp = "/auth/signup";
+  static const productByCateogryId = "/products/category/";
   //static const signIn = "/auth/signup";
 }

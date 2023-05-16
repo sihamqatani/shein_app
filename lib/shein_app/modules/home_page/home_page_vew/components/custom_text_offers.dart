@@ -20,7 +20,7 @@ class CustomTextOffers extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: .5.h, left: .5.w, right: .5.w),
                   child: Text(
-                    "R10",
+                    "\$10",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 12.sp,

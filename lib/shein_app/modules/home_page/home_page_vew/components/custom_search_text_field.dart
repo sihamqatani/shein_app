@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 //import 'package:flutter_hex_color/flutter_hex_color.dart';
 
@@ -66,12 +67,8 @@ class MyAddTextField extends StatelessWidget {
             // ),
             border: InputBorder.none,
             suffix: InkWell(
-                onTap: suffixPressed,
-                child: Icon(
-                  suffix,
-                  size: 20,
-                  color: Colors.black,
-                )),
+              onTap: suffixPressed,
+            ),
             fillColor: Colors.grey[50],
             filled: true,
             prefixIcon: prefix == null
@@ -81,7 +78,7 @@ class MyAddTextField extends StatelessWidget {
                     color: Colors.black,
                   ),
             // focusColor: HexColor('#0063FF'),
-
+            suffixIcon: Icon(Icons.camera_alt_outlined, size: 20),
             //  hintText: label,
             hintStyle: TextStyle(
                 color: Colors.grey.withOpacity(.6),

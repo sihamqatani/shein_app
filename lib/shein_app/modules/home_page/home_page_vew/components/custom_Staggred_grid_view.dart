@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:shein_app/shein_app/core/dummy/dummy.dart';
+import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_controller/home_page_controller.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_discount_card.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_staggred_card.dart';
@@ -9,7 +10,8 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CustomStaggredGridvie extends GetView<HomePageController> {
-  const CustomStaggredGridvie({Key? key}) : super(key: key);
+  List<LocalStores> images = [];
+  CustomStaggredGridvie({Key? key, required this.images}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class CustomStaggredGridvie extends GetView<HomePageController> {
                 shrinkWrap: true,
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index) =>
-                    CustomStaggredCard(category: cateogrries[index]),
+                    CustomStaggredCard(category: images[index]),
                 staggeredTileBuilder: (int index) {
                   controller.isHeight = index.isEven;
                   return StaggeredTile.count(3, index.isEven ? 4 : 5);

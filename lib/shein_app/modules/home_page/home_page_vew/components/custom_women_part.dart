@@ -172,21 +172,34 @@ class CustomWomenPart extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: 100.h, width: 100.h, child: const CustomStaggredGridvie()),
+            height: 100.h,
+            width: 100.h,
+            child: CustomStaggredGridvie(
+              images: woman,
+            )),
         SizedBox(
           height: 5.h,
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shein info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Shipping info",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Return Policy",
         ),
         CustomContactRow(
-          text: "Contact us",
+          text: "Term & Condition",
+        ),
+        CustomContactRow(
+          text: "Social Responsibility",
+        ),
+        CustomContactRow(
+          text: "Klama",
+        ),
+        CustomContactRow(
+          text: "Careers",
         ),
       ],
     );

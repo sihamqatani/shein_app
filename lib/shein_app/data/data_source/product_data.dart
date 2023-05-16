@@ -16,4 +16,19 @@ class ProductData {
       print("error pro here....${e.toString()}");
     }
   }
+
+  Future getCateogryDataProductById(page, id) async {
+    try {
+      var response = await DioHelper.getData(
+          url: "${ApiRoutes.productByCateogryId}$id", query: {"page": page});
+      if (response.statusCode == 200) {
+        print(response.data);
+        return response.data;
+      } else {
+        return response.data;
+      }
+    } catch (e) {
+      print("error pro here....${e.toString()}");
+    }
+  }
 }

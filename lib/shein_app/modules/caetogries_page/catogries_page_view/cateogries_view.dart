@@ -41,6 +41,8 @@ class CateogriesPageView extends StatelessWidget {
                         ),
                       ),
                     ),
+                    ///////////////
+
                     Padding(
                       padding: EdgeInsets.all(1.h),
                       child: Icon(
@@ -77,7 +79,7 @@ class CateogriesPageView extends StatelessWidget {
                             )
                           : SpinKitFadingCircle(
                               size: 20.sp,
-                              color: ColorManager.primary,
+                              color: Colors.black,
                             )),
                 ),
                 body: TabBarView(
@@ -86,17 +88,23 @@ class CateogriesPageView extends StatelessWidget {
                       Container(
                         width: 27.w,
                         color: Colors.grey[300],
-                        child: ListView.builder(
-                          itemCount: controller.subCateogry.length,
-                          itemBuilder: (context, index) {
-                            return SubCateogryContainer(
-                              x: index,
-                              name: controller.subCateogry[index].name,
-                            );
-                          },
-                        ),
+                        child: controller.subCateogry.isNotEmpty
+                            ? ListView.builder(
+                                itemCount: controller.subCateogry.length,
+                                itemBuilder: (context, index) {
+                                  return SubCateogryContainer(
+                                    x: index,
+                                    name: controller.subCateogry[index].name,
+                                    idCat: controller.subCateogry[index].id,
+                                  );
+                                },
+                              )
+                            : SpinKitFadingCircle(
+                                size: 20.sp,
+                                color: Colors.black,
+                              ),
                       ),
-                      Container(
+                      SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width * .7,
                         child: GetBuilder<CateogriesController>(
@@ -104,7 +112,7 @@ class CateogriesPageView extends StatelessWidget {
                           builder: (controller) =>
                               PagedGridView<int, ProductItem>(
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
                               mainAxisSpacing: 1,
                               crossAxisSpacing: 1,
@@ -113,7 +121,7 @@ class CateogriesPageView extends StatelessWidget {
                             builderDelegate:
                                 PagedChildBuilderDelegate<ProductItem>(
                               itemBuilder: (context, item, index) {
-                                return Container(
+                                return SizedBox(
                                   height: 20.h,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -137,10 +145,16 @@ class CateogriesPageView extends StatelessWidget {
                                   ),
                                 );
                               },
-                              firstPageProgressIndicatorBuilder: (_) =>
-                                  Center(child: CircularProgressIndicator()),
-                              newPageProgressIndicatorBuilder: (_) =>
-                                  Center(child: CircularProgressIndicator()),
+                              firstPageProgressIndicatorBuilder: (_) => Center(
+                                  child: SpinKitFadingCircle(
+                                size: 20.sp,
+                                color: Colors.black,
+                              )),
+                              newPageProgressIndicatorBuilder: (_) => Center(
+                                  child: SpinKitFadingCircle(
+                                size: 20.sp,
+                                color: Colors.black,
+                              )),
                             ),
                           ),
                         ),

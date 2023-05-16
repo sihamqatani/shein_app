@@ -7,6 +7,8 @@ import 'package:shein_app/shein_app/data/models/catogry_model.dart';
 import 'package:shein_app/shein_app/data/models/product_model.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/utils/utils_widgets/snack_bar_message.dart';
+
 class CateogriesController extends GetxController {
   /////////variables/////
   TabController? tabController;
@@ -50,6 +52,9 @@ class CateogriesController extends GetxController {
         print("no correct");
       }
     } catch (e) {
+      showSnakBarMessage(
+          msg: "OOp's..Something is error..check your network.",
+          color: Colors.red[900]);
       print("something error ${e.toString()}");
     }
   }
@@ -68,7 +73,36 @@ class CateogriesController extends GetxController {
         update();
       }
     } catch (e) {
+      showSnakBarMessage(
+          msg: "OOp's..Something is error..check your network.",
+          color: Colors.red[900]);
       print("something error ${e.toString()}");
+    }
+  }
+
+  fetchProductById(id, page) async {
+    try {
+      var res = await ProductData().getCateogryDataProductById(page, id);
+      var pro = res["data"] as List;
+      if (res["status"] == 200) {
+        productItem = pro.map((e) => ProductItem.fromMap(e)).toList();
+        final isLastPage = productItem.length < 10;
+        if (isLastPage) {
+          print("isLoading");
+          pagingController.appendLastPage(productItem);
+          update();
+        } else {
+          print("isNoLoading");
+          final nextPageKey = page + 1;
+          pagingController.appendPage(productItem, nextPageKey);
+          update();
+        }
+      }
+    } catch (error) {
+      showSnakBarMessage(
+          msg: "OOp's..Something is error..check your network.",
+          color: Colors.red[900]);
+      print("some thing is error");
     }
   }
 
@@ -93,6 +127,13 @@ class CateogriesController extends GetxController {
     } catch (e) {
       print("something error ${e.toString()}");
     }
+  }
+
+  fetchProducts(int productId) {
+    pagingController.refresh();
+    pagingController.addPageRequestListener((pageKey) {
+      fetchProductById(productId, pageKey);
+    });
   }
 
   @override

@@ -5,6 +5,7 @@ import 'app_color.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
+    indicatorColor: Colors.black, iconTheme: IconThemeData(color: Colors.black),
     appBarTheme: AppBarTheme(
       backgroundColor: ColorManager.primary,
       elevation: 0,

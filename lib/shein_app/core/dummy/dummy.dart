@@ -17,8 +17,8 @@ List<LocalStores> cateogrries = [
 ////////////////////
 List<LocalStores> banner = [
   LocalStores(id: 1, image: "assets/13.jpg", name: "baby&kids"),
-  LocalStores(id: 1, image: "assets/16.jpg", name: "baby&kids"),
   LocalStores(id: 1, image: "assets/2.jpg", name: "baby&kids"),
+  LocalStores(id: 1, image: "assets/w3b.jpg", name: "baby&kids"),
 ];
 List<LocalStores> wBanner = [
   LocalStores(id: 1, image: "assets/w1.jpg", name: "baby&kids"),
@@ -36,4 +36,20 @@ List<LocalStores> collection = [
   LocalStores(id: 2, image: "assets/w1.jpg", name: "VACTION"),
   LocalStores(id: 3, image: "assets/w2.jpg", name: "WEDDING"),
   LocalStores(id: 4, image: "assets/11.jpg", name: "WORK"),
+];
+List<LocalStores> man = [
+  LocalStores(id: 1, image: "assets/15.jpg", name: "EVERYDAY"),
+  LocalStores(id: 2, image: "assets/14.jpg", name: "VACTION"),
+  LocalStores(id: 1, image: "assets/m1.jpg", name: "EVERYDAY"),
+  LocalStores(id: 2, image: "assets/m2.jpg", name: "VACTION"),
+  LocalStores(id: 3, image: "assets/m3.jpg", name: "WEDDING"),
+  LocalStores(id: 4, image: "assets/m6.jpg", name: "WORK"),
+  LocalStores(id: 4, image: "assets/31.jpg", name: "WORK")
+];
+List<LocalStores> woman = [
+  LocalStores(id: 1, image: "assets/w1.jpg", name: "EVERYDAY"),
+  LocalStores(id: 2, image: "assets/w2.jpg", name: "VACTION"),
+  LocalStores(id: 3, image: "assets/w4.jpg", name: "WEDDING"),
+  LocalStores(id: 4, image: "assets/34.jpg", name: "WORK"),
+  LocalStores(id: 4, image: "assets/w5.jpg", name: "WORK"),
 ];

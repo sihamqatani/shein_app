@@ -61,7 +61,8 @@ class RegisterController extends GetxController {
         isLoading.value = false;
         print("some thing is error$error");
         showSnakBarMessage(
-            msg: "OOp's..User already exists.", color: Colors.red[900]);
+            msg: "OOp's..User already exists or check your network.",
+            color: Colors.red[900]);
       }
     }
   }

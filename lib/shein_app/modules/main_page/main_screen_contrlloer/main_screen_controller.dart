@@ -20,9 +20,9 @@ class MainScreenController extends GetxController {
     CateogriesPageView(),
     // HomePageView(),
     Container(),
-    Container(),
+    // Container(),
 
-    //AuthPageView(),
+    AuthPageView(),
   ];
   List<String> label = ["Home", "Cateogries", "New", "Profile"].obs;
   List<String> icon = [

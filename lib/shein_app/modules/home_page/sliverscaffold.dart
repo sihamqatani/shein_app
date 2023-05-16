@@ -149,7 +149,7 @@ class _SliverScaffoldState extends State<SliverScaffold>
               ),
               centerTitle: true,
               title: SizedBox(
-                //width: 36.h,
+                width: 32.h,
                 height: _searchBarHeight,
                 child: MyAddTextField(
                   suffix: Icons.camera_alt_outlined,

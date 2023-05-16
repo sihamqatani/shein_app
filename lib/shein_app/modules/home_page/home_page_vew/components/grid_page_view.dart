@@ -13,13 +13,16 @@ class GridPageView extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.h),
+              borderRadius: BorderRadius.circular(1.h),
               image: DecorationImage(
-                image: AssetImage(cateogreis.image!),
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  cateogreis.image!,
+                ),
               ))
           // cateogrries[index].image!) )),
           ,
-          height: 8.h,
+          height: 8.5.h,
           //Image.asset(
           // cateogrries[index].image!)),
         ),

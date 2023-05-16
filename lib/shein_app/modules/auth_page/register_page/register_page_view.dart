@@ -37,7 +37,7 @@ class RegisterPageView extends GetView<RegisterController> {
               child: MyAuthTextField(
                 controller: controller.emailController,
                 obcure: false,
-                label: "Email or Phone number",
+                label: "Email",
                 validate: ((p0) {
                   return validInput(p0!, 10, 40, "email");
                 }),
@@ -94,23 +94,32 @@ class RegisterPageView extends GetView<RegisterController> {
                   hight: 7.h,
                   width: 80.w),
             ),
-            CircleAvatar(
-              backgroundColor: ColorManager.primary,
-              child: Icon(Icons.facebook_outlined,
-                  color: Colors.blueAccent, size: 30.sp),
+            SizedBox(
+              height: 2.h,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                  child: Text(
-                "-OR-",
-                style: TextStyle(fontWeight: FontWeight.w800),
-              )),
-            ),
-            CircleAvatar(
-              backgroundColor: ColorManager.primary,
-              child: Icon(Icons.whatsapp_outlined,
-                  color: Colors.greenAccent, size: 30.sp),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: ColorManager.primary,
+                  child: Icon(Icons.facebook_outlined,
+                      color: Colors.blueAccent, size: 30.sp),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                      child: Text(
+                    "-OR-",
+                    style: TextStyle(fontWeight: FontWeight.w800),
+                  )),
+                ),
+                CircleAvatar(
+                  backgroundColor: ColorManager.primary,
+                  child: Icon(Icons.whatsapp_outlined,
+                      color: Colors.greenAccent, size: 30.sp),
+                ),
+              ],
             ),
           ],
         ),

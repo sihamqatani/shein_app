@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shein_app/shein_app/core/utils/utils_widgets/rich_text.dart';
 import 'package:shein_app/shein_app/data/models/local_store.dart';
 import 'package:sizer/sizer.dart';
 
@@ -36,11 +37,17 @@ class DairlyDrop extends StatelessWidget {
                   image: AssetImage(localStores!.image!),
                   fit: BoxFit.fill,
                 ))),
-            Text(
-              "12.5\$",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            RichTextUtils(
+              text: '12.',
+              textspan: '05 \$',
+              fontSizeSpan: 6.sp,
+              fontSizeText: 9.sp,
             )
+            // Text(
+            //   "12.5\$",
+            //   style:
+            //       TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            // )
           ],
         ));
   }

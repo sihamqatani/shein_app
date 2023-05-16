@@ -22,7 +22,7 @@ class SubCateogryContainer extends GetView<CateogriesController> {
         () => InkWell(
           onTap: () {
             controller.getSelected(x);
-            controller.getCatogryById(idCat);
+            controller.fetchProducts(idCat!);
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 500),
