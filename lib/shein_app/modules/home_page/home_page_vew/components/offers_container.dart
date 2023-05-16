@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -10,13 +11,27 @@ class OffersContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Center(
-            child: Text(
-          "Buy 2 get 1 of them 50% OFF",
-          style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold,
-              color: ColorManager.primary),
-        )),
+          child: DefaultTextStyle(
+              style: TextStyle(
+                fontSize: 14.sp,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    blurRadius: 5.0,
+                    color: Colors.white,
+                    offset: Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: AnimatedTextKit(
+                isRepeatingAnimation: true,
+                animatedTexts: [
+                  FlickerAnimatedText('Buy 2 get 1 of them 50% OFF'),
+                  FlickerAnimatedText('Buy 1 get 1 of them 20% OFF'),
+                ],
+              )),
+        ),
         height: 6.h,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

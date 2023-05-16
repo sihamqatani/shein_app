@@ -23,7 +23,7 @@ class CustomStaggredCard extends GetView<HomePageController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    height: controller.isHeight == true ? 19.h : 26.h,
+                    height: controller.isHeight == true ? 20.h : 26.h,
                     width: 25.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -34,7 +34,7 @@ class CustomStaggredCard extends GetView<HomePageController> {
                         ),
                         image: DecorationImage(
                           image: AssetImage(category!.image!),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ))),
                 Column(
                   children: [
@@ -48,20 +48,17 @@ class CustomStaggredCard extends GetView<HomePageController> {
                             fontSize: 13.sp),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(1.h),
-                      child: Row(
-                        children: const [
-                          Text(
-                            "woman T.shirt",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Spacer(),
-                          Icon(Icons.more_horiz)
-                        ],
-                      ),
+                    //  Spacer(),
+                    Row(
+                      children: const [
+                        Text(
+                          "woman T.shirt",
+                          style: TextStyle(
+                              color: Colors.grey, fontWeight: FontWeight.bold),
+                        ),
+                        Spacer(),
+                        Icon(Icons.more_horiz)
+                      ],
                     ),
                   ],
                 )

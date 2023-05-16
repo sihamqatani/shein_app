@@ -11,13 +11,13 @@ class MainScreenController extends GetxController {
   // bool isSelected = false;
   var list = [
     // SliverScaffold(),
-    NewHomePage(),
-    // HomePageView(),
+    // NewHomePage(),
+    HomePageView(),
     // Container(
     //   color: Colors.redAccent,
     // ),
-    Container(),
-    //CateogriesPageView(),
+    //Container(),
+    CateogriesPageView(),
     // HomePageView(),
     Container(),
     Container(),

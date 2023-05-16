@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shein_app/shein_app/core/utils/utils_widgets/headline_text.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_container.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_dailry.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_slider.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/discount_row_time.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/offers_container.dart';
@@ -11,6 +12,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/dummy/dummy.dart';
 import '../../home_page_controller/home_page_controller.dart';
+import 'custom_Staggred_grid_view.dart';
+import 'custom_contact_us.row.dart';
+import 'custom_discount_card.dart';
 import 'custom_spotlight.dart';
 import 'grid_page_view.dart';
 
@@ -121,7 +125,69 @@ class CustomWomenPart extends StatelessWidget {
           ),
           init: HomePageController(),
         ),
-        DiscountRowTime()
+        DiscountRowTime(),
+        Container(
+          height: 30.h,
+          width: 100.w,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 6,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => ProductCard(
+                      switchy: 1,
+                      localStores: cateogrries[index],
+                    )),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(1.h),
+          child: Center(
+            child: HeadlineText(
+                text: "dailydrops", size: 14.sp, fontWeight: FontWeight.w600),
+          ),
+        ),
+        Container(
+          height: 30.h,
+          width: 100.w,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 6,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => DairlyDrop(
+                      localStores: cateogrries[index],
+                    )),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Recommanded",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 13.sp),
+          ),
+        ),
+        SizedBox(
+            height: 100.h, width: 100.h, child: const CustomStaggredGridvie()),
+        SizedBox(
+          height: 5.h,
+        ),
+        CustomContactRow(
+          text: "Contact us",
+        ),
+        CustomContactRow(
+          text: "Contact us",
+        ),
+        CustomContactRow(
+          text: "Contact us",
+        ),
+        CustomContactRow(
+          text: "Contact us",
+        ),
       ],
     );
   }

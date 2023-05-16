@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shein_app/shein_app/core/utils/theme/app_color.dart';
-import 'package:shein_app/shein_app/data/models/local_store.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_controller/home_page_controller.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_Staggred_grid_view.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_contact_us.row.dart';
+import 'package:shein_app/shein_app/core/utils/utils_widgets/headline_text.dart';
+import 'package:shein_app/shein_app/modules/auth_page/components/custom_button.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_container.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_discount_card.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_dailry.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_slider.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_spotlight.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_text_offers.dart';
-import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/grid_page_view.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/discount_row_time.dart';
 import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/offers_container.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/ranking_row.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/shop_by_cateog.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/dummy/dummy.dart';
-import 'discount_row_time.dart';
+import '../../home_page_controller/home_page_controller.dart';
+import 'custom_Staggred_grid_view.dart';
+import 'custom_contact_us.row.dart';
+import 'custom_discount_card.dart';
+import 'custom_spotlight.dart';
+import 'grid_page_view.dart';
 
-class CustomAllPart extends StatelessWidget {
-  const CustomAllPart({Key? key}) : super(key: key);
+class CustomManPart extends StatelessWidget {
+  const CustomManPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      //physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         OffersContainer(),
         Padding(
@@ -33,7 +35,6 @@ class CustomAllPart extends StatelessWidget {
           child: Container(
             height: 15.w,
             child: ListView.separated(
-              shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) => SizedBox(
                 width: 2.w,
@@ -45,33 +46,46 @@ class CustomAllPart extends StatelessWidget {
             ),
           ),
         ),
-        CustomSlider(),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            CustomTextOffers(),
-            CustomTextOffers(),
-            CustomTextOffers()
-          ],
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 18.h,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/m3.jpg"), fit: BoxFit.cover),
+          ),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    "WAVES OF\n YOUTH",
+                    style: TextStyle(
+                        wordSpacing: 2,
+                        color: ColorManager.primary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 3.h,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ),
+                BlackButton(
+                    title: Text(
+                      "SHOP NOW >",
+                      style: TextStyle(
+                        color: ColorManager.primary,
+                      ),
+                    ),
+                    hight: 4.h,
+                    width: 25.w)
+              ]),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 1.h),
+          padding: EdgeInsets.all(1.h),
           child: Center(
-            child: Container(
-              color: Colors.black,
-              height: 3.h,
-              width: 12.h,
-              child: Center(
-                child: Text(
-                  " Code: WWs23",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 9.sp),
-                ),
-              ),
-            ),
+            child: HeadlineText(
+                text: "Shop by Cateogry",
+                size: 14.sp,
+                fontWeight: FontWeight.w600),
           ),
         ),
         GetBuilder<HomePageController>(
@@ -95,7 +109,8 @@ class CustomAllPart extends StatelessWidget {
                             crossAxisSpacing: 2,
                             mainAxisSpacing: 4),
                         itemBuilder: (BuildContext context, int index) {
-                          return GridPageView(cateogreis: cateogrries[index]);
+                          return ShopByCateogrie(
+                              cateogreis: cateogrries[index]);
                         },
                       );
                     }),
@@ -119,16 +134,45 @@ class CustomAllPart extends StatelessWidget {
           ),
           init: HomePageController(),
         ),
-        Padding(
-          padding: EdgeInsets.all(2.h),
-          child: Container(
-            height: 7.h,
-            // width: 200.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.w),
-              image: const DecorationImage(
-                  image: AssetImage("assets/2.jpg"), fit: BoxFit.fill),
-            ),
+        RankingRow(),
+        SizedBox(
+          height: 34.h,
+          width: 90.w,
+          child: Padding(
+            padding: EdgeInsets.all(1.h),
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: collection.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 27.h,
+                        width: 110.w,
+                        color: Colors.grey[200],
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(cateogrries[index].name!),
+                            ),
+                            Row(children: [
+                              DairlyDrop(
+                                localStores: cateogrries[index],
+                              ),
+                              DairlyDrop(
+                                localStores: cateogrries[index],
+                              ),
+                              DairlyDrop(
+                                localStores: cateogrries[index],
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                    )),
           ),
         ),
         DiscountRowTime(),
@@ -147,61 +191,23 @@ class CustomAllPart extends StatelessWidget {
                     )),
           ),
         ),
-        Container(
-          height: 4.h,
-          width: 100.w,
-          child: Padding(
-            padding: EdgeInsets.all(1.h),
-            child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(width: 4.h),
-                shrinkWrap: true,
-                itemCount: 6,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => InkWell(
-                      onTap: () {},
-                      child: Text(
-                        "Up To 10%",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    )),
-          ),
-        ),
-        SizedBox(
-          height: 30.h,
-          width: 100.w,
-          child: Padding(
-            padding: EdgeInsets.all(1.h),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: cateogrries.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => ProductCard(
-                      switchy: 2,
-                      localStores: cateogrries[index],
-                    )),
-          ),
-        ),
         Padding(
-          padding: EdgeInsets.only(left: 2.h),
-          child: Text(
-            "SpotLight",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 13.sp),
+          padding: EdgeInsets.all(1.h),
+          child: Center(
+            child: HeadlineText(
+                text: "dailydrops", size: 14.sp, fontWeight: FontWeight.w600),
           ),
         ),
-        SizedBox(
-          height: 25.h,
+        Container(
+          height: 30.h,
           width: 100.w,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: cateogrries.length,
+                itemCount: 6,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => CustomSpotLight(
-                      text: "SHEIN BRAND",
+                itemBuilder: (context, index) => DairlyDrop(
                       localStores: cateogrries[index],
                     )),
           ),

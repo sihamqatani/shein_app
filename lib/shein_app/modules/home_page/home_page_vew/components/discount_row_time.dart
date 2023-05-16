@@ -8,27 +8,23 @@ class DiscountRowTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(1.h),
-      child: Row(
-        children: [
-          Row(children: [
-            Text("Discount Now"),
-            Spacer(),
-            Text("End at"),
-            Container(
-                color: Colors.black,
-                child: Text("01", style: TextStyle(color: Colors.white))),
-            Text(":"),
-            Container(
-                color: Colors.black,
-                child: Text("01", style: TextStyle(color: Colors.white))),
-            Text(":"),
-            Container(
-                color: Colors.black,
-                child: Text("01", style: TextStyle(color: Colors.white))),
-            Text(":")
-          ]),
-        ],
-      ),
+      child: Row(children: [
+        Text("Discount Now"),
+        Spacer(),
+        Text("End at"),
+        Container(
+            color: Colors.black,
+            child: Text("01", style: TextStyle(color: Colors.white))),
+        Text(":"),
+        Container(
+            color: Colors.black,
+            child: Text("01", style: TextStyle(color: Colors.white))),
+        Text(":"),
+        Container(
+            color: Colors.black,
+            child: Text("01", style: TextStyle(color: Colors.white))),
+        Text(":")
+      ]),
     );
   }
 }

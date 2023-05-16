@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_man_part.dart';
+import 'package:shein_app/shein_app/modules/home_page/home_page_vew/components/custom_women_part.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../../core/utils/utils_widgets/custom_tabBar.dart';
@@ -114,20 +116,8 @@ class NewHomePage extends StatelessWidget {
               body: TabBarView(
                 children: <Widget>[
                   CustomAllPart(),
-                  Center(
-                    child: Text(
-                      'KALTEGETRANKE',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      'HEIBGETRANKE',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-                    ),
-                  ),
+                  CustomWomenPart(),
+                  CustomManPart(),
                   Center(
                     child: Text(
                       'NO DATA',
